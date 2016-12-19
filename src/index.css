@@ -1,0 +1,14 @@
+html, body { height:100%;margin: 0; }
+.head { width:100%;left:0;top:0; }
+.head.closed { position:relative;z-index: 1;animation:sing 1s steps(3, end) alternate; }
+.head.open { position:absolute;z-index:0; }
+.group1 { display:flex;list-style:none;padding:0; }
+.group1:after { content:'';display:table;clear:both; }
+.group1 > li { position:relative }
+.sing { animation:sing 4s steps(12) infinite; }
+@keyframes sing {
+  0% { opacity: 1; }
+  25% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity:0; }
+}
