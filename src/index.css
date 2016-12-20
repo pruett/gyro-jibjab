@@ -41,10 +41,11 @@ header img { display:block;margin:auto;max-width:350px;padding:3%; }
   transform:translateY(-10vh);
   position: absolute;
   display: block;
-  background: url('assets/img/snowflake1.png') no-repeat center center;
+  background-repeat: no-repeat;
+  background-position: center center; url('assets/img/snowflake1.png') no-repeat center center;
   background-size: contain;
   animation-name: snow;
-  animation-duration: 3s;
+  animation-duration: 5s;
   animation-iteration-count: infinite;
 }
 
@@ -53,7 +54,7 @@ header img { display:block;margin:auto;max-width:350px;padding:3%; }
   100% { transform: translateY(110vh) }
 }
 
-#snowflakes i:nth-of-type(2n) {}
+#snowflakes i:nth-of-type(2n) {background-image: url('assets/img/snowflake1.png'); width:20px; height:20px;}
 #snowflakes i:nth-of-type(2n+1) {background-image: url('assets/img/snowflake2.png'); width:30px; height:30px;}
 #snowflakes i:nth-of-type(2n+2) {background-image: url('assets/img/snowflake3.png'); width:40px; height:40px;}
 #snowflakes i:nth-of-type(2n+3) {background-image: url('assets/img/snowflake4.png'); width:50px; height:50px;}
@@ -73,9 +74,9 @@ header img { display:block;margin:auto;max-width:350px;padding:3%; }
 #snowflakes i:nth-of-type(7n+1) {opacity: .8;}
 #snowflakes i:nth-of-type(7n+2) {opacity: .9;}
 
-#snowflakes i:nth-of-type(11n) {animation-duration: 4s;}
-#snowflakes i:nth-of-type(11n+1) {animation-duration: 2.5s;}
-#snowflakes i:nth-of-type(11n+2) {animation-duration: 3.75s;}
+#snowflakes i:nth-of-type(11n) {animation-duration: 8s;}
+#snowflakes i:nth-of-type(11n+1) {animation-duration: 5.5s;}
+#snowflakes i:nth-of-type(11n+2) {animation-duration: 12s;}
 
 @keyframes sing {
   to { opacity: 0; }

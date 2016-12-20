@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:title" content="" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="" />
@@ -359,12 +358,42 @@
             var time = this.target.currentTime
             console.log(time)
 
-            if (time > 25.5) {
-              fourthRow.classList.remove('verse2')
+            if (time > 54) {
+              fourthRow.classList.remove('verse1')
+              falala(true)
+            } else if (time > 53) {
+              falala(false)
+              fourthRow.classList.add('verse1')
+            } else if (time > 50) {
+              thirdRow.classList.remove('verse1')
+              falala(true)
+            } else if (time > 47) {
+              falala(false)
+              thirdRow.classList.add('verse1')
+            } else if (time > 44) {
+              secondRow.classList.remove('verse2')
+              falala(true)
+            } else if (time > 41) {
+              falala(false)
+              secondRow.classList.add('verse2')
+            } else if (time > 37) {
+              firstRow.classList.remove('verse1')
+              falala(true)
+            } else if (time > 34) {
+              falala(false)
+              firstRow.classList.add('verse1')
+            } else if (time > 31) {
+              fifthRow.classList.remove('verse1')
+              falala(true)
+            } else if (time > 28) {
+              falala(false)
+              fifthRow.classList.add('verse1')
+            } else if (time > 25.5) {
+              fourthRow.classList.remove('verse1')
               falala(true)
             } else if (time > 22.5) {
               falala(false)
-              fourthRow.classList.add('verse2')
+              fourthRow.classList.add('verse1')
             } else if (time > 19.5) {
               thirdRow.classList.remove('verse2')
               falala(true)
