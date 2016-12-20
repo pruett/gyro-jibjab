@@ -10,63 +10,17 @@
     <meta property="og:url" content="" />
     <meta property="og:description" content="" />
     <title>Gyro</title>
-    <!-- <link rel="stylesheet" href="styles.css" /> -->
     <style>
       html, body { height:100%;margin: 0; }
       html { background: url('assets/img/bg.png') no-repeat bottom center;background-size:cover; }
-      header img { display:block;margin:auto;max-width:350px;padding:3%; }
-      .head { width:100%;left:0;top:0;max-width:75px; }
-      .head.closed { position:relative;z-index:1;opacity:1; }
-      .head.open { position:absolute;z-index:0; }
-      .group { display:flex;justify-content:center;list-style:none;padding:0; }
-      .group:after { content:'';display:table;clear:both; }
-      .group > li { position:relative;margin:0 10px;opacity:0;transform:translateY(-5px);transition:all .65s ease-in-out; }
-
-      #conductor.show li { opacity:1;transform:translateY(0px); }
-
-      #snowflakes {}
-
-      @keyframes sing {
-        to { opacity: 0; }
-      }
-
-      @keyframes dance {
-        0% { transform: rotate(0)}
-        50% { transform: rotate(3deg); }
-        100% { transform: rotate(-3deg); }
-      }
-
-      .verse1 > li, .verse2 > li {
-        animation-name: dance;
-        animation-duration: .85s;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-      }
-
-      .verse1 .closed {
-        animation-name: sing;
-        animation-duration: .3s;
-        animation-iteration-count: 8;
-        animation-direction: alternate;
-      }
-
-      .verse2 .closed {
-        animation-name: sing;
-        animation-duration: .45s;
-        animation-iteration-count: 7;
-        animation-direction: alternate;
-      }
-
-      .fa-la-la .closed {
-        animation-name: sing;
-        animation-duration: .25s;
-        animation-iteration-count: 9;
-        animation-direction: alternate;
-      }
     </style>
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div id="snowflakes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div id="snowflakes">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
 
     <header>
       <img src='assets/img/header.png' />
@@ -354,23 +308,21 @@
           <img class='head closed' src='assets/img/closed/69.png' />
           <img class='head open' src='assets/img/open/69.png' />
         </li>
-        <li>
-          <img class='head closed' src='assets/img/closed/70.png' />
-          <img class='head open' src='assets/img/open/70.png' />
-        </li>
-      </ul>
-
-      <ul class='group sixth'>
-      </ul>
-
-      <ul class="group seventh">
-      </ul>
-
-      <ul class="group eighth">
       </ul>
     </div>
 
-    <button>PLAY</button>
+    <div class='btn-container'>
+      <button id='start' class='start-btn'>
+        <img src='assets/img/btn.png' />
+      </button>
+
+      <div class='social-container'>
+        <a></a>
+        <a></a>
+        <a></a>
+        <img src='assets/img/social.png' />
+      </div>
+    </div>
 
     <audio src='assets/audio/dth.mp3'></audio>
 
@@ -433,17 +385,22 @@
             }
           }
 
+          var startBtn = document.getElementById('start')
+          startBtn.addEventListener('click', function () {
+            W.music.play()
+          }, false)
+
           // Play audio
           W.music = document.getElementsByTagName('audio')[0]
 
           // Do we have enough audio data?
           W.music.addEventListener('canplaythrough', function (e) {
-            W.music.play()
+            startBtn.className = 'start-btn ready'
           }, false)
 
-          // In case audio is in browser cache, we can play
+          // In case audio is in browser cache
           if (W.music.readyState > 3) {
-            W.music.play()
+            startBtn.className = 'start-btn ready'
           }
 
           // Initialize music eventlistener

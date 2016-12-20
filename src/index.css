@@ -1,14 +1,116 @@
-html, body { height:100%;margin: 0; }
-.head { width:100%;left:0;top:0; }
-.head.closed { position:relative;z-index: 1;animation:sing 1s steps(3, end) alternate; }
+header img { display:block;margin:auto;max-width:350px;padding:3%; }
+.head { width:100%;left:0;top:0;max-width:75px; }
+.head.closed { position:relative;z-index:1;opacity:1; }
 .head.open { position:absolute;z-index:0; }
-.group1 { display:flex;list-style:none;padding:0; }
-.group1:after { content:'';display:table;clear:both; }
-.group1 > li { position:relative }
-.sing { animation:sing 4s steps(12) infinite; }
-@keyframes sing {
-  0% { opacity: 1; }
-  25% { opacity: 0; }
+.group { display:flex;justify-content:center;list-style:none;padding:0; }
+.group:after { content:'';display:table;clear:both; }
+.group > li { position:relative;margin:0 10px;opacity:0;transform:translateY(-5px);transition:all .65s ease-in-out; }
+
+#conductor.show li { opacity:1;transform:translateY(0px); }
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.start-btn {
+  margin: 0 15%;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.85s ease-in-out;
+}
+
+.start-btn.ready {
+  opacity:1;
+  visibility: visible;
+}
+
+.social-container {
+  position: absolute;
+  right: 5%;
+}
+
+#snowflakes i {
+  width:60px;
+  height:60px;
+  opacity:0;
+  transform:translateY(-10vh);
+  position: absolute;
+  display: block;
+  background: url('assets/img/snowflake1.png') no-repeat center center;
+  background-size: contain;
+  animation-name: snow;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes snow {
   50% { opacity: 1; }
-  100% { opacity:0; }
+  100% { transform: translateY(110vh) }
+}
+
+#snowflakes i:nth-of-type(2n) {}
+#snowflakes i:nth-of-type(2n+1) {background-image: url('assets/img/snowflake2.png'); width:30px; height:30px;}
+#snowflakes i:nth-of-type(2n+2) {background-image: url('assets/img/snowflake3.png'); width:40px; height:40px;}
+#snowflakes i:nth-of-type(2n+3) {background-image: url('assets/img/snowflake4.png'); width:50px; height:50px;}
+
+#snowflakes i:nth-of-type(5n) {animation-delay: .5s;}
+#snowflakes i:nth-of-type(5n+1) {animation-delay: 1.5s;}
+#snowflakes i:nth-of-type(5n+2) {animation-delay: .2s;}
+#snowflakes i:nth-of-type(5n+3) {animation-delay: 2s;}
+
+#snowflakes i:nth-of-type(3n) {left: 50vw;}
+#snowflakes i:nth-of-type(3n+1) {left: 70vw;}
+#snowflakes i:nth-of-type(3n+2) {left: 90vw;}
+#snowflakes i:nth-of-type(3n+3) {left: 30vw;}
+#snowflakes i:nth-of-type(3n+4) {left: 10vw;}
+
+#snowflakes i:nth-of-type(7n) {opacity: .5;}
+#snowflakes i:nth-of-type(7n+1) {opacity: .8;}
+#snowflakes i:nth-of-type(7n+2) {opacity: .9;}
+
+#snowflakes i:nth-of-type(11n) {animation-duration: 4s;}
+#snowflakes i:nth-of-type(11n+1) {animation-duration: 2.5s;}
+#snowflakes i:nth-of-type(11n+2) {animation-duration: 3.75s;}
+
+@keyframes sing {
+  to { opacity: 0; }
+}
+
+@keyframes dance {
+  0% { transform: rotate(0)}
+  50% { transform: rotate(3deg); }
+  100% { transform: rotate(-3deg); }
+}
+
+.verse1 > li, .verse2 > li {
+  animation-name: dance;
+  animation-duration: .85s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.verse1 .closed {
+  animation-name: sing;
+  animation-duration: .3s;
+  animation-iteration-count: 8;
+  animation-direction: alternate;
+}
+
+.verse2 .closed {
+  animation-name: sing;
+  animation-duration: .45s;
+  animation-iteration-count: 7;
+  animation-direction: alternate;
+}
+
+.fa-la-la .closed {
+  animation-name: sing;
+  animation-duration: .25s;
+  animation-iteration-count: 9;
+  animation-direction: alternate;
 }
