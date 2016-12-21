@@ -3,15 +3,31 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:description" content="" />
-    <title>Gyro</title>
+    <meta property="og:title" content="gyro:" />
+    <meta property="og:description" content="Igniting business decisions in a numb world." />
+    <meta property="og:url" content="https://www.gyro.com/" />
+    <meta property="og:site_name" content="gyro" />
+    <meta property="og:image" content="https://www.gyro.com/wp-content/uploads/2015/09/gyro-logo-1200.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="Igniting business decisions in a numb world." />
+    <meta name="twitter:title" content="gyro:" />
+    <meta name="twitter:site" content="@gyro" />
+    <meta name="twitter:image" content="https://www.gyro.com/wp-content/uploads/2015/09/gyro-logo-1200.jpg" />
+    <meta name="twitter:creator" content="@gyro" />
+    <link rel="shortcut icon" href="https://www.gyro.com/wp-content/themes/gyro/favicon.ico" />
+    <title>Gyro | Deck the Halls</title>
     <style>
       html, body { height:100%;margin: 0; }
       html { background: url('assets/img/bg.png') no-repeat bottom center;background-size:cover; }
+      header img {
+        display: block;
+        margin: auto;
+        width: 80%;
+        padding-top: 3%;
+        max-width: 220px;
+      }
     </style>
     <link rel="stylesheet" href="index.css" />
   </head>
@@ -316,9 +332,9 @@
       </button>
 
       <div class='social-container'>
-        <a></a>
-        <a></a>
-        <a></a>
+        <a href="mailto:?subject=copy&body=Check out this site http://gyro-deckthehalls.surge.sh" class="email icon"></a>
+        <a href="https://twitter.com/gyro?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="twitter icon"></a>
+        <a href="https://www.facebook.com/Gyro/" class="facebook icon"></a>
         <img src='assets/img/social.png' />
       </div>
     </div>
@@ -328,17 +344,31 @@
     <script>
       (function (W, document) {
         W.addEventListener('load', function (e) {
-          // Show images
-          var conductor = document.getElementById('conductor')
-          conductor.classList.add('show')
 
+          // Show faces when page loads
+          var faceItems = document.getElementsByTagName('li')
+          for (var i=0; i < faceItems.length; i++) {
+            faceItems[i].classList.add('show')
+          }
+
+          var containers = document.querySelectorAll('.group > li')
           var allRows = document.querySelectorAll('.group')
+          var evenRows = document.querySelectorAll('.group.second, .group.fourth')
+          var oddRows = document.querySelectorAll('.group.first, .group.third, .group.fifth')
 
-          var firstRow = document.querySelector('.group.first')
-          var secondRow = document.querySelector('.group.second')
-          var thirdRow = document.querySelector('.group.third')
-          var fourthRow = document.querySelector('.group.fourth')
-          var fifthRow = document.querySelector('.group.fifth')
+          var finale = function (sing) {
+            for (var i=0; i < allRows.length; i++) {
+              var row = allRows[i]
+              row.classList.remove('fa-la-la')
+              void row.offsetWidth
+
+              if (sing) {
+                row.classList.add('finale')
+              } else {
+                row.classList.remove('finale')
+              }
+            }
+          }
 
           var falala = function (sing) {
             for (var i=0; i < allRows.length; i++) {
@@ -353,81 +383,145 @@
             }
           }
 
-          // Add/remove CSS classes to animate faces
+          var singVerse = function (row) {
+            if (row === 'odd') {
+              for (var i=0; i < oddRows.length; i++) {
+                var row = oddRows[i]
+                void row.offsetWidth
+                row.classList.add('verse')
+              }
+            } else {
+              for (var i=0; i < evenRows.length; i++) {
+                var row = evenRows[i]
+                void row.offsetWidth
+                row.classList.add('verse')
+              }
+            }
+          }
+
+          var resetRows = function (row) {
+            if (row === 'odd') {
+              for (var i=0; i < oddRows.length; i++) {
+                var row = oddRows[i]
+                row.classList.remove('verse')
+              }
+
+            } else {
+              for (var i=0; i < evenRows.length; i++) {
+                var row = evenRows[i]
+                row.classList.remove('verse')
+              }
+            }
+          }
+
           var updateChorus = function () {
             var time = this.target.currentTime
-            console.log(time)
 
-            if (time > 54) {
-              fourthRow.classList.remove('verse1')
-              falala(true)
-            } else if (time > 53) {
+            if (time > 84) {
               falala(false)
-              fourthRow.classList.add('verse1')
-            } else if (time > 50) {
-              thirdRow.classList.remove('verse1')
+              finale(false)
+            } else if (time > 78) {
+              finale(true)
+            } else if (time > 71) {
+              resetRows('even')
               falala(true)
-            } else if (time > 47) {
+            } else if (time > 68) {
               falala(false)
-              thirdRow.classList.add('verse1')
-            } else if (time > 44) {
-              secondRow.classList.remove('verse2')
+              singVerse('even')
+            } else if (time > 64.5) {
+              resetRows('odd')
               falala(true)
-            } else if (time > 41) {
+            } else if (time > 62) {
               falala(false)
-              secondRow.classList.add('verse2')
-            } else if (time > 37) {
-              firstRow.classList.remove('verse1')
+              singVerse('odd')
+            } else if (time > 59.5) {
+              resetRows('even')
+              falala(true)
+            } else if (time > 56.25) {
+              falala(false)
+              singVerse('even')
+            } else if (time > 54) {
+              resetRows('odd')
+              falala(true)
+            } else if (time > 51.25) {
+              falala(false)
+              singVerse('odd')
+            } else if (time > 48.25) {
+              resetRows('even')
+              falala(true)
+            } else if (time > 45.5) {
+              falala(false)
+              singVerse('even')
+            } else if (time > 42.5) {
+              resetRows('odd')
+              falala(true)
+            } else if (time > 39.5) {
+              falala(false)
+              singVerse('odd')
+            } else if (time > 36.5) {
+              resetRows('even')
               falala(true)
             } else if (time > 34) {
               falala(false)
-              firstRow.classList.add('verse1')
-            } else if (time > 31) {
-              fifthRow.classList.remove('verse1')
+              singVerse('even')
+            } else if (time > 30.5) {
+              resetRows('odd')
               falala(true)
             } else if (time > 28) {
               falala(false)
-              fifthRow.classList.add('verse1')
+              singVerse('odd')
             } else if (time > 25.5) {
-              fourthRow.classList.remove('verse1')
+              resetRows('even')
               falala(true)
             } else if (time > 22.5) {
               falala(false)
-              fourthRow.classList.add('verse1')
+              singVerse('even')
             } else if (time > 19.5) {
-              thirdRow.classList.remove('verse2')
+              resetRows('odd')
               falala(true)
-            } else if (time > 16.5) {
+            } else if (time > 17) {
               falala(false)
-              thirdRow.classList.add('verse2')
+              singVerse('odd')
             } else if (time > 14) {
-              secondRow.classList.remove('verse1')
+              resetRows('even')
               falala(true)
             } else if (time > 11) {
               falala(false)
-              secondRow.classList.add('verse1')
+              singVerse('even')
             } else if (time > 8) {
-              firstRow.classList.remove('verse1')
+              resetRows('odd')
               falala(true)
-            } else if (time > 5.7) {
-              firstRow.classList.add('verse1')
+            } else if (time > 5.5) {
+              for (var i=0; i < containers.length; i++) {
+                containers[i].classList.remove('sway')
+              }
+              singVerse('odd')
             }
           }
 
           var startBtn = document.getElementById('start')
           startBtn.addEventListener('click', function () {
-            W.music.play()
+            if (W.music.paused) {
+              W.music.play()
+            } else {
+              W.music.pause()
+              W.music.currentTime = 0
+            }
+
+            // Make faces sway when music starts
+            for (var i=0; i < containers.length; i++) {
+              containers[i].classList.add('sway')
+            }
+
           }, false)
 
-          // Play audio
           W.music = document.getElementsByTagName('audio')[0]
 
           // Do we have enough audio data?
           W.music.addEventListener('canplaythrough', function (e) {
             startBtn.className = 'start-btn ready'
           }, false)
-
-          // In case audio is in browser cache
+          // In case 'canplayaudio' already fired
           if (W.music.readyState > 3) {
             startBtn.className = 'start-btn ready'
           }
@@ -440,6 +534,5 @@
         })
       }(window, document))
     </script>
-
   </body>
 </html>
