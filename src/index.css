@@ -110,6 +110,12 @@
   animation-direction: alternate-reverse;
   animation-fill-mode: both;
 }
+.verse1 > li {
+  animation-name: spin;
+  animation-duration: 1.5s;
+  animation-iteration-count: 2;
+  animation-direction: normal;
+}
 .fa-la-la > li {
   animation-name: dance;
   animation-duration: .45s;
@@ -178,6 +184,10 @@
 @keyframes sing {
   to { opacity: 0; }
 }
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 @keyframes open {
   0% { opacity: 1; }
   1%, 100% { opacity: 0; }
@@ -188,5 +198,3 @@
 }
 @keyframes snow {
   50% { opacity: 1; }
-  100% { transform: translateY(90vh) }
-}
