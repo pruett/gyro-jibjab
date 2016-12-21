@@ -44,7 +44,7 @@
 .head.open { position:absolute;z-index:0; }
 
 /*Regular verse*/
-.verse .closed {
+.verse .closed, .verse1 .closed {
   animation-name: sing;
   animation-duration: .175s;
   animation-iteration-count: infinite;
@@ -52,7 +52,7 @@
 }
 
 /*Fa-la-la-la-la*/
-.fa-la-la .closed {
+.fa-la-la .closed, .fa-la-la1 .closed {
   animation-name: sing;
   animation-duration: .525s;
   animation-iteration-count: infinite;
@@ -105,40 +105,68 @@
 }
 .group > li.sway {
   animation-name: dance;
-  animation-duration: .25s;
+  animation-duration: .5s;
   animation-iteration-count: infinite;
   animation-direction: alternate-reverse;
   animation-fill-mode: both;
 }
+.verse > li {
+  animation-name: grow;
+  animation-duration: 2.2s;
+  animation-iteration-count: 1;
+  animation-direction: alternate-reverse;
+}
 .verse1 > li {
   animation-name: spin;
-  animation-duration: 1.5s;
+  animation-duration: 1.15s;
   animation-iteration-count: 2;
   animation-direction: normal;
 }
 .fa-la-la > li {
   animation-name: dance;
-  animation-duration: .45s;
+  animation-duration: .5s;
   animation-iteration-count: infinite;
   animation-direction: alternate-reverse;
   animation-fill-mode: both;
 }
-.verse > li.show, .finale > li.show {
+.fa-la-la1 > li {
+  animation-name: grow;
+  animation-duration: 1s;
+  animation-iteration-count: 2;
+  animation-direction: alternate-reverse;
+}
+.first.fa-la-la1 > li {
+  animation-delay: .2s
+}
+.second.fa-la-la1 > li {
+  animation-delay: .3s
+}
+.third.fa-la-la1 > li {
+  animation-delay: .4s
+}
+.fourth.fa-la-la1 > li {
+  animation-delay: .5s
+}
+.fifth.fa-la-la1 > li {
+  animation-delay: .6s
+}
+
+.finale > li.show {
   transform: scale(1.2);
 }
-.first.finale > li.show {
+.first.finale > li {
   transition-delay: 0s;
 }
-.second.finale > li.show {
+.second.finale > li {
   transition-delay: 1s;
 }
-.third.finale > li.show {
+.third.finale > li {
   transition-delay: 2s;
 }
-.fourth.finale > li.show {
+.fourth.finale > li {
   transition-delay: 3s;
 }
-.fifth.finale > li.show {
+.fifth.finale > li {
   transition-delay: 4s;
 }
 
@@ -184,6 +212,14 @@
 @keyframes sing {
   to { opacity: 0; }
 }
+@keyframes grow {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -198,4 +234,5 @@
 }
 @keyframes snow {
   50% { opacity: 1; }
+  100% { transform: translateY(90vh); }
 }

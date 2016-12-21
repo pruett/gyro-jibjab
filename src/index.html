@@ -370,239 +370,133 @@
             }
           }
 
-          var falala = function (sing) {
+          var falala = function (sing, verseName) {
             for (var i=0; i < allRows.length; i++) {
               var row = allRows[i]
               if (sing) {
                 void row.offsetWidth
-                row.classList.add('fa-la-la')
+                row.classList.add(verseName)
               } else {
-                row.classList.remove('fa-la-la')
+                row.classList.remove(verseName)
                 void row.offsetWidth
               }
             }
           }
 
-          var singVerse = function (row) {
+          var singVerse = function (row, verseName) {
             if (row === 'odd') {
               for (var i=0; i < oddRows.length; i++) {
                 var row = oddRows[i]
                 void row.offsetWidth
-                row.classList.add('verse')
+                row.classList.add(verseName)
               }
             } else {
               for (var i=0; i < evenRows.length; i++) {
                 var row = evenRows[i]
                 void row.offsetWidth
-                row.classList.add('verse')
+                row.classList.add(verseName)
               }
             }
           }
 
-          var resetRows = function (row) {
+          var resetRows = function (row, verseName) {
             if (row === 'odd') {
               for (var i=0; i < oddRows.length; i++) {
                 var row = oddRows[i]
-                row.classList.remove('verse')
-                void row.offsetWidth
+                row.classList.remove(verseName)
               }
+
             } else {
               for (var i=0; i < evenRows.length; i++) {
                 var row = evenRows[i]
-                row.classList.remove('verse')
-                void row.offsetWidth
+                row.classList.remove(verseName)
               }
             }
           }
-
-          var inA = false
-          , inB = false
-          , inC = false
-          , inD = false
-          , inE = false
-          , inF = false
-          , inG = false
-          , inH = false
-          , inI = false
-          , inJ = false
-          , inK = false
-          , inL = false
-          , inM = false
-          , inN = false
-          , inO = false
-          , inP = false
-          , inQ = false
-          , inR = false
-          , inS = false
-          , inT = false
-          , inU = false
-          , inV = false
-          , inW = false
-          , inX = false
-          , inY = false
-          , inZ = false
-          , inAA = false
 
           var updateChorus = function () {
             var time = this.target.currentTime
+            console.log(time)
 
             if (time > 84) {
-              if (!inAA) {
-                falala(false)
-                finale(false)
-              }
-              inAA = true
+              falala(false, 'fa-la-la')
+              finale(false)
             } else if (time > 78) {
-              if (!inZ) {
-                finale(true)
-              }
-              inZ = true
+              finale(true)
             } else if (time > 71) {
-              if (!inY) {
-                resetRows('even')
-                falala(true)
-              }
-              inY = true
+              resetRows('even', 'verse1')
+              falala(true, 'fa-la-la')
             } else if (time > 68) {
-              if (!inX) {
-                falala(false)
-                singVerse('even')
-              }
-              inX = true
+              falala(false, 'fa-la-la1')
+              singVerse('even', 'verse1')
             } else if (time > 64.5) {
-              if (!inW) {
-                resetRows('odd')
-                falala(true)
-              }
-              inW = true
+              resetRows('odd', 'verse')
+              falala(true, 'fa-la-la1')
             } else if (time > 62) {
-              if (!inV) {
-                falala(false)
-                singVerse('odd')
-              }
-              inV = true
+              falala(false, 'fa-la-la')
+              singVerse('odd', 'verse')
             } else if (time > 59.5) {
-              if (!inU) {
-                resetRows('even')
-                falala(true)
-              }
-              inU = true
+              resetRows('even', 'verse1')
+              falala(true, 'fa-la-la')
             } else if (time > 56.25) {
-              if (!inT) {
-                falala(false)
-                singVerse('even')
-              }
-              inT = true
+              falala(false, 'fa-la-la')
+              singVerse('even', 'verse1')
             } else if (time > 54) {
-              if (!inS) {
-                resetRows('odd')
-                falala(true)
-              }
-              inS = true
+              resetRows('odd', 'verse')
+              falala(true, 'fa-la-la')
             } else if (time > 51.25) {
-              if (!inR) {
-                falala(false)
-                singVerse('odd')
-              }
-              inR = true
+              falala(false, 'fa-la-la')
+              singVerse('odd', 'verse')
             } else if (time > 48.25) {
-              if (!inQ) {
-                resetRows('even')
-                falala(true)
-              }
-              inQ = true
+              resetRows('even', 'verse1')
+              falala(true, 'fa-la-la')
             } else if (time > 45.5) {
-              if (!inP) {
-                falala(false)
-                singVerse('even')
-              }
-              inP = true
+              falala(false, 'fa-la-la1')
+              singVerse('even', 'verse1')
             } else if (time > 42.5) {
-              if (!inO) {
-                resetRows('odd')
-                falala(true)
-              }
-              inO = true
+              resetRows('odd', 'verse1')
+              falala(true, 'fa-la-la1')
             } else if (time > 39.5) {
-              if (!inN) {
-                falala(false)
-                singVerse('odd')
-              }
-              inN = true
+              falala(false, 'fa-la-la')
+              singVerse('odd', 'verse1')
             } else if (time > 36.5) {
-              if (!inM) {
-                resetRows('even')
-                falala(true)
-              }
-              inM = true
+              resetRows('even', 'verse')
+              falala(true, 'fa-la-la')
             } else if (time > 34) {
-              if (!inL) {
-                falala(false)
-                singVerse('even')
-              }
-              inL = true
+              falala(false, 'fa-la-la')
+              singVerse('even', 'verse')
             } else if (time > 30.5) {
-              if (!inK) {
-                resetRows('odd')
-                falala(true)
-              }
-              inK = true
+              resetRows('odd', 'verse1')
+              falala(true, 'fa-la-la')
             } else if (time > 28) {
-              if (!inJ) {
-                falala(false)
-                singVerse('odd')
-              }
-              inJ = true
+              falala(false, 'fa-la-la')
+              singVerse('odd', 'verse1')
             } else if (time > 25.5) {
-              if (!inH) {
-                resetRows('even')
-                falala(true)
-              }
-              inH = true
+              resetRows('even', 'verse1')
+              falala(true, 'fa-la-la')
             } else if (time > 22.5) {
-              if (!inG) {
-                falala(false)
-                singVerse('even')
-              }
-              inG = true
+              falala(false, 'fa-la-la1')
+              singVerse('even', 'verse1')
             } else if (time > 19.5) {
-              if (!inF) {
-                resetRows('odd')
-                falala(true)
-              }
-              inF = true
+              resetRows('odd', 'verse')
+              falala(true, 'fa-la-la1')
             } else if (time > 17) {
-              if (!inE) {
-                falala(false)
-                singVerse('odd')
-              }
-              inE = true
+              falala(false, 'fa-la-la')
+              singVerse('odd', 'verse')
             } else if (time > 14) {
-              if (!inD) {
-                resetRows('even')
-                falala(true)
-              }
-              inD = true
+              resetRows('even', 'verse1')
+              falala(true, 'fa-la-la')
             } else if (time > 11) {
-              if (!inC) {
-                falala(false)
-                singVerse('even')
-              }
-              inC = true
+              falala(false, 'fa-la-la')
+              singVerse('even', 'verse1')
             } else if (time > 8) {
-              if (!inB) {
-                resetRows('odd')
-                falala(true)
-              }
-              inB = true
+              resetRows('odd', 'verse')
+              falala(true, 'fa-la-la')
             } else if (time > 5.5) {
-              if (!inA) {
-                for (var i=0; i < containers.length; i++) {
-                  containers[i].classList.remove('sway')
-                }
-                singVerse('odd')
+              for (var i=0; i < containers.length; i++) {
+                containers[i].classList.remove('sway')
               }
-              inA = true
+              singVerse('odd', 'verse')
             }
           }
 
