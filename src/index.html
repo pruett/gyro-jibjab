@@ -31,7 +31,7 @@
     </style>
     <link rel="stylesheet" href="index.css" />
   </head>
-  <body>
+  <body id="orientation-container">
     <div id="snowflakes">
       <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
       <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
@@ -416,7 +416,6 @@
 
           var updateChorus = function () {
             var time = this.target.currentTime
-            console.log(time)
 
             if (time > 84) {
               falala(false, 'fa-la-la')
@@ -517,15 +516,18 @@
           }, false)
 
           W.music = document.getElementsByTagName('audio')[0]
+          startBtn.className = 'start-btn ready'
 
-          // Do we have enough audio data?
-          W.music.addEventListener('canplaythrough', function (e) {
-            startBtn.className = 'start-btn ready'
-          }, false)
-          // In case 'canplayaudio' already fired
-          if (W.music.readyState > 3) {
-            startBtn.className = 'start-btn ready'
-          }
+          // // Do we have enough audio data?
+          // W.music.addEventListener('canplaythrough', function (e) {
+          //   alert('in can play through')
+          //   startBtn.className = 'start-btn ready'
+          // }, false)
+          // // In case 'canplayaudio' already fired
+          // if (W.music.readyState > 3) {
+          //   alert(`in ready state ${W.music.readyState}`)
+          //   startBtn.className = 'start-btn ready'
+          // }
 
           // Initialize music eventlistener
           W.music.addEventListener('timeupdate', function (e) {

@@ -1,3 +1,11 @@
+/*Force mobile users to view in landscape*/
+#orientation-container { display:block; }
+@media only screen and (orientation:portrait) {
+  #orientation-container { transform: rotate(90deg); }
+}
+@media only screen and (orientation:landscape) {
+  #orientation-container { transform: rotate(0deg); }
+}
 /*Snowflakes*/
 #snowflakes i {
   width:60px;
